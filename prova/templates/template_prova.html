@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prova</title>
+</head>
+<body>
+<h1>Questões:</h1>
+<form action="resultado" method="GET">
+{% for questao in prova %}
+    <li>
+        <li><h2>{{ questao.contexto.nome}}</h2></li>
+        <li><h3>{{ questao.contexto.enunciado }}</h3></li>
+        <li>
+            {% for resposta in questao.respostas%}
+            <li>
+                <input type="radio" name="{{questao.contexto.id}}" value="{{resposta.id}}">
+                {{ resposta.conteudo }}
+            </li>
+            {% endfor %}
+        </li>
+    </li>
+{% endfor %}
+
+<button type="submit">Enviar</button>
+</form>
+</body>
+</html>
